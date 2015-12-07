@@ -51,7 +51,17 @@ public class TimeRenderer {
 	}
 
 	public String getSecondRowDisplay() {
-		return "R...";
+		int hourOfDay = datetime.get(Calendar.HOUR_OF_DAY);
+		int hourRemainder = hourOfDay % 5;
+		String secondRowDisplay = "";
+		for (int i = 0; i < hourRemainder; i++) {
+			secondRowDisplay += redSymbol;
+		}
+		// now add unlit fields
+		for (int i = secondRowDisplay.length(); i < SECOND_FIELD_ROW_LENGTH; i++) {
+			secondRowDisplay += unlitSymbol;
+		}
+		return secondRowDisplay;
 	}
 
 	public String getThirdRowDisplay() {
