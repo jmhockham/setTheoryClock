@@ -30,7 +30,9 @@ public class TimeRenderer {
 	}
 
 	public String getSecondsDisplay() {
-		return "Y";
+		int seconds = datetime.get(Calendar.SECOND);
+		int remainder = seconds % 2;
+		return remainder > 0 ? yellowSymbol : unlitSymbol;
 	}
 
 	public String getFirstRowDisplay() {
