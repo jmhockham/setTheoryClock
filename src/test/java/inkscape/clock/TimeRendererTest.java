@@ -36,4 +36,29 @@ public class TimeRendererTest {
 		assertTrue(timeRenderer.getUnlitSymbol().equals(UNLIT_SYMBOL));
 	}
 
+	@Test
+	public void testGetSecondsDisplay() {
+		assertTrue(false);
+	}
+
+	@Test
+	public void testGetFirstRowDisplay() {
+		assertTrue(false);
+	}
+
+	@Test
+	public void testGetSecondRowDisplay() {
+		assertTrue(false);
+	}
+
+	@Test
+	public void testGetThirdRowDisplay() {
+		assertTrue(false);
+	}
+
+	@Test
+	public void testGetFourthRowDisplay() {
+		assertTrue(false);
+	}
+	
 }

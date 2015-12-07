@@ -24,7 +24,7 @@ public class App {
 
 	public static void main(String[] args) {
 		App a = new App();
-		System.out.println("The current date/time is:" + a.getCalendar().getTime());
+		System.out.println("The current date/time is:" + a.getDateFormat().format(a.getCalendar().getTime()));
 		System.out.println("seconds diplayed here");
 		System.out.println("first row displayed here");
 		System.out.println("second row displayed here");

@@ -28,5 +28,5 @@ public class TimeRenderer {
 	public String getUnlitSymbol() {
 		return unlitSymbol;
 	}
-	
+
 }
