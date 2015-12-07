@@ -17,5 +17,16 @@ public class TimeRenderer {
 		this.datetime = datetime;
 	}
 
+	public String getRedSymbol() {
+		return redSymbol;
+	}
+
+	public String getYellowSymbol() {
+		return yellowSymbol;
+	}
+
+	public String getUnlitSymbol() {
+		return unlitSymbol;
+	}
 	
 }
