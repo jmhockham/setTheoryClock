@@ -36,32 +36,11 @@ public class TimeRenderer {
 	}
 
 	public String getFirstRowDisplay() {
-		// this is in 24hr format
-		int hourOfDay = datetime.get(Calendar.HOUR_OF_DAY);
-		int hourDividedByFive = hourOfDay / 5;
-		String firstRowDisplay = "";
-		for (int i = 0; i < hourDividedByFive; i++) {
-			firstRowDisplay += redSymbol;
-		}
-		// now add unlit fields
-		for (int i = firstRowDisplay.length(); i < FIRST_FIELD_ROW_LENGTH; i++) {
-			firstRowDisplay += unlitSymbol;
-		}
-		return firstRowDisplay;
+		return createRow(Calendar.HOUR_OF_DAY, false, redSymbol, FIRST_FIELD_ROW_LENGTH);
 	}
 
 	public String getSecondRowDisplay() {
-		int hourOfDay = datetime.get(Calendar.HOUR_OF_DAY);
-		int hourRemainder = hourOfDay % 5;
-		String secondRowDisplay = "";
-		for (int i = 0; i < hourRemainder; i++) {
-			secondRowDisplay += redSymbol;
-		}
-		// now add unlit fields
-		for (int i = secondRowDisplay.length(); i < SECOND_FIELD_ROW_LENGTH; i++) {
-			secondRowDisplay += unlitSymbol;
-		}
-		return secondRowDisplay;
+		return createRow(Calendar.HOUR_OF_DAY, true, redSymbol, SECOND_FIELD_ROW_LENGTH);
 	}
 
 	public String getThirdRowDisplay() {
@@ -86,17 +65,24 @@ public class TimeRenderer {
 	}
 
 	public String getFourthRowDisplay() {
-		int minute = datetime.get(Calendar.MINUTE);
-		int minutesRemainder = minute % 5;
-		String fourthRowDisplay = "";
-		for (int i = 0; i < minutesRemainder; i++) {
-			fourthRowDisplay += yellowSymbol;
+		return createRow(Calendar.MINUTE, true, yellowSymbol, FOURTH_FIELD_ROW_LENGTH);
+	}
+
+	private String createRow(int calendarField, boolean usingModulo, String rowSymbol, int fieldLength) {
+		String row = "";
+		int unitOfTime = datetime.get(calendarField);
+		if (usingModulo) {
+			unitOfTime = unitOfTime % 5;
+		} else {
+			unitOfTime = unitOfTime / 5;
 		}
-		// now add unlit fields
-		for (int i = fourthRowDisplay.length(); i < FOURTH_FIELD_ROW_LENGTH; i++) {
-			fourthRowDisplay += unlitSymbol;
+		for (int i = 0; i < unitOfTime; i++) {
+			row += rowSymbol;
 		}
-		return fourthRowDisplay;
+		for (int i = row.length(); i < fieldLength; i++) {
+			row += unlitSymbol;
+		}
+		return row;
 	}
 
 }
