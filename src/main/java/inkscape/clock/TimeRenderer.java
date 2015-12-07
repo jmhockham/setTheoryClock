@@ -44,40 +44,38 @@ public class TimeRenderer {
 	}
 
 	public String getThirdRowDisplay() {
-		int minute = datetime.get(Calendar.MINUTE);
-		int minutesDividedByFive = minute / 5;
-		String thirdRowDisplay = "";
-		int redLightCounter = 0;
-		for (int i = 0; i < minutesDividedByFive; i++) {
-			redLightCounter++;
-			if (redLightCounter >= 3) {
-				thirdRowDisplay += redSymbol;
-				redLightCounter = 0;
-			} else {
-				thirdRowDisplay += yellowSymbol;
-			}
-		}
-		// now add unlit fields
-		for (int i = thirdRowDisplay.length(); i < THIRD_FIELD_ROW_LENGTH; i++) {
-			thirdRowDisplay += unlitSymbol;
-		}
-		return thirdRowDisplay;
+		return createRow(Calendar.MINUTE, false, yellowSymbol, THIRD_FIELD_ROW_LENGTH, redSymbol, 3);
 	}
 
 	public String getFourthRowDisplay() {
 		return createRow(Calendar.MINUTE, true, yellowSymbol, FOURTH_FIELD_ROW_LENGTH);
 	}
 
-	private String createRow(int calendarField, boolean usingModulo, String rowSymbol, int fieldLength) {
+	private String createRow(int calendarField, boolean usingModulo, String rowSymbol, int fieldLength){
+		return createRow(calendarField, usingModulo, rowSymbol, fieldLength, null, -1);
+	}
+
+	private String createRow(int calendarField, boolean usingModulo, String rowSymbol, int fieldLength,
+			String alternateSymbol, int alternateThreshold) {
 		String row = "";
 		int unitOfTime = datetime.get(calendarField);
-		if (usingModulo) {
-			unitOfTime = unitOfTime % 5;
+		unitOfTime = usingModulo ? unitOfTime % 5 : unitOfTime / 5;
+		if (alternateSymbol == null || alternateThreshold <= 0) {
+			for (int i = 0; i < unitOfTime; i++) {
+				row += rowSymbol;
+			}
 		} else {
-			unitOfTime = unitOfTime / 5;
-		}
-		for (int i = 0; i < unitOfTime; i++) {
-			row += rowSymbol;
+			int thresholdCounter = 0;
+			for (int i = 0; i < unitOfTime; i++) {
+				thresholdCounter++;
+				if (thresholdCounter >= alternateThreshold) {
+					row += alternateSymbol;
+					thresholdCounter = 0;
+				} else {
+					row += rowSymbol;
+				}
+
+			}
 		}
 		for (int i = row.length(); i < fieldLength; i++) {
 			row += unlitSymbol;
