@@ -36,11 +36,22 @@ public class TimeRenderer {
 	}
 
 	public String getFirstRowDisplay() {
-		return "R...";
+		// this is in 24hr format
+		int hourOfDay = datetime.get(Calendar.HOUR_OF_DAY);
+		int hourDividedByFive = hourOfDay / 5;
+		String firstRowDisplay = "";
+		for (int i = 0; i < hourDividedByFive; i++) {
+			firstRowDisplay += redSymbol;
+		}
+		// now add unlit fields
+		for (int i = firstRowDisplay.length(); i < FIRST_FIELD_ROW_LENGTH; i++) {
+			firstRowDisplay += unlitSymbol;
+		}
+		return firstRowDisplay;
 	}
 
 	public String getSecondRowDisplay() {
-		return "....";
+		return "R...";
 	}
 
 	public String getThirdRowDisplay() {

@@ -12,8 +12,8 @@ public class TimeRendererTest {
 	public static final String RED_SYMBOL = "R";
 	public static final String YELLOW_SYMBOL = "Y";
 	public static final String UNLIT_SYMBOL = ".";
-	private static final String FIRST_ROW_TEST_VALUE = "R...";
-	private static final String SECOND_ROW_TEST_VALUE = "....";
+	private static final String FIRST_ROW_TEST_VALUE = "....";
+	private static final String SECOND_ROW_TEST_VALUE = "R...";
 	private static final String THIRD_ROW_TEST_VALUE = "YYRY.......";
 	private static final String FOURTH_ROW_TEST_VALUE = "Y...";
 	
