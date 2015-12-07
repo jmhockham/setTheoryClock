@@ -86,7 +86,17 @@ public class TimeRenderer {
 	}
 
 	public String getFourthRowDisplay() {
-		return "Y...";
+		int minute = datetime.get(Calendar.MINUTE);
+		int minutesRemainder = minute % 5;
+		String fourthRowDisplay = "";
+		for (int i = 0; i < minutesRemainder; i++) {
+			fourthRowDisplay += yellowSymbol;
+		}
+		// now add unlit fields
+		for (int i = fourthRowDisplay.length(); i < FOURTH_FIELD_ROW_LENGTH; i++) {
+			fourthRowDisplay += unlitSymbol;
+		}
+		return fourthRowDisplay;
 	}
 
 }
