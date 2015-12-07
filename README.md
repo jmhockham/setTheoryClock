@@ -6,8 +6,13 @@ representing a lit red light, and Y representing a lit yellow light. Eg
 
 >{run command}
 09:54 and 50 seconds
+
 .
+
 R...
+
 RRRR
+
 YYRYYRYYRY.
+
 RRRR 
