@@ -29,4 +29,24 @@ public class TimeRenderer {
 		return unlitSymbol;
 	}
 
+	public String getSecondsDisplay() {
+		return "Y";
+	}
+
+	public String getFirstRowDisplay() {
+		return "R...";
+	}
+
+	public String getSecondRowDisplay() {
+		return "....";
+	}
+
+	public String getThirdRowDisplay() {
+		return "YYRY.......";
+	}
+
+	public String getFourthRowDisplay() {
+		return "Y...";
+	}
+
 }

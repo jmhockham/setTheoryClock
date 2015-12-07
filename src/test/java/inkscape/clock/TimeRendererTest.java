@@ -12,6 +12,10 @@ public class TimeRendererTest {
 	public static final String RED_SYMBOL = "R";
 	public static final String YELLOW_SYMBOL = "Y";
 	public static final String UNLIT_SYMBOL = ".";
+	private static final String FIRST_ROW_TEST_VALUE = "R...";
+	private static final String SECOND_ROW_TEST_VALUE = "....";
+	private static final String THIRD_ROW_TEST_VALUE = "YYRY.......";
+	private static final String FOURTH_ROW_TEST_VALUE = "Y...";
 	
 	private Calendar datetime;
 	private TimeRenderer timeRenderer;
@@ -38,27 +42,31 @@ public class TimeRendererTest {
 
 	@Test
 	public void testGetSecondsDisplay() {
-		assertTrue(false);
+		assertTrue(timeRenderer.getSecondsDisplay().equals(YELLOW_SYMBOL));
 	}
 
 	@Test
 	public void testGetFirstRowDisplay() {
-		assertTrue(false);
+		String firstRow = timeRenderer.getFirstRowDisplay();
+		assertEquals(firstRow, FIRST_ROW_TEST_VALUE);
 	}
 
 	@Test
 	public void testGetSecondRowDisplay() {
-		assertTrue(false);
+		String secondRow = timeRenderer.getSecondRowDisplay();
+		assertEquals(secondRow, SECOND_ROW_TEST_VALUE);
 	}
 
 	@Test
 	public void testGetThirdRowDisplay() {
-		assertTrue(false);
+		String thirdRow = timeRenderer.getThirdRowDisplay();
+		assertEquals(thirdRow, THIRD_ROW_TEST_VALUE);
 	}
 
 	@Test
 	public void testGetFourthRowDisplay() {
-		assertTrue(false);
+		String fourthRow = timeRenderer.getFourthRowDisplay();
+		assertEquals(fourthRow, FOURTH_ROW_TEST_VALUE);
 	}
 	
 }

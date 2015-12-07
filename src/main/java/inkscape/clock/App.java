@@ -25,10 +25,11 @@ public class App {
 	public static void main(String[] args) {
 		App a = new App();
 		System.out.println("The current date/time is:" + a.getDateFormat().format(a.getCalendar().getTime()));
-		System.out.println("seconds diplayed here");
-		System.out.println("first row displayed here");
-		System.out.println("second row displayed here");
-		System.out.println("third row displayed here");
-		System.out.println("fourth row displayed here");
+		TimeRenderer timeRenderer = new TimeRenderer(a.getCalendar());
+		System.out.println(timeRenderer.getSecondsDisplay());
+		System.out.println(timeRenderer.getFirstRowDisplay());
+		System.out.println(timeRenderer.getSecondRowDisplay());
+		System.out.println(timeRenderer.getThirdRowDisplay());
+		System.out.println(timeRenderer.getFourthRowDisplay());
 	}
 }
