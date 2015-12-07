@@ -65,7 +65,24 @@ public class TimeRenderer {
 	}
 
 	public String getThirdRowDisplay() {
-		return "YYRY.......";
+		int minute = datetime.get(Calendar.MINUTE);
+		int minutesDividedByFive = minute / 5;
+		String thirdRowDisplay = "";
+		int redLightCounter = 0;
+		for (int i = 0; i < minutesDividedByFive; i++) {
+			redLightCounter++;
+			if (redLightCounter >= 3) {
+				thirdRowDisplay += redSymbol;
+				redLightCounter = 0;
+			} else {
+				thirdRowDisplay += yellowSymbol;
+			}
+		}
+		// now add unlit fields
+		for (int i = thirdRowDisplay.length(); i < THIRD_FIELD_ROW_LENGTH; i++) {
+			thirdRowDisplay += unlitSymbol;
+		}
+		return thirdRowDisplay;
 	}
 
 	public String getFourthRowDisplay() {
